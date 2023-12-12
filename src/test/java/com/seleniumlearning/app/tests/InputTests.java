@@ -13,6 +13,7 @@ public class InputTests {
 
     private WebDriver chromeDriver = new ChromeDriver();
     private String websiteURL = "https://www.selenium.dev/selenium/web/web-form.html";
+    private String stringInputToCheck = "test value";
 
     @Test
     public void checkIfAllInputFieldsExist() {
@@ -34,7 +35,6 @@ public class InputTests {
     public void checkTextInput() {
         chromeDriver.get(websiteURL);
         WebElement textInput = chromeDriver.findElement(InputFields.textInput);
-        String stringInputToCheck = "test value";
         textInput.sendKeys(stringInputToCheck);
         assertEquals(stringInputToCheck, textInput.getDomProperty("value"));
         chromeDriver.quit();
@@ -44,9 +44,18 @@ public class InputTests {
     public void checkPasswordInput() {
         chromeDriver.get(websiteURL);
         WebElement passwordField = chromeDriver.findElement(InputFields.password);
-        String stringInputToCheck = "test value";
         passwordField.sendKeys(stringInputToCheck);
         assertEquals("password",passwordField.getDomAttribute("type"));
+        chromeDriver.quit();
+    }
+
+    @Test
+    public void checkTextarea() {
+        chromeDriver.get(websiteURL);
+        WebElement textArea = chromeDriver.findElement(InputFields.textArea);
+        assertNotNull(textArea);
+        textArea.sendKeys(stringInputToCheck);
+        assertEquals(stringInputToCheck, textArea.getDomProperty("value"));
         chromeDriver.quit();
     }
 
