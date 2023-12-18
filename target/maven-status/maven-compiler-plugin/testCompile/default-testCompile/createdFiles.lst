@@ -1,1 +1,2 @@
-com\seleniumlearning\app\AppTest.class
+com\seleniumlearning\app\tests\InputTests.class
+com\seleniumlearning\app\pageobjects\InputFields.class
